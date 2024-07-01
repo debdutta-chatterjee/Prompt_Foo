@@ -1,0 +1,32 @@
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+description: "My eval"
+
+providers:
+  - id: 'http://localhost:11434/api/generate'
+    config:
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+      config:
+        time_limit: 400000
+        responseParser: 'json.response'
+      body:
+        prompt: '{{prompt}}'
+        model: '{{model}}'
+        translate: '{{language}}'
+        stream: false
+     
+
+tests:
+  - vars:
+      model: 'llama3'      
+      language: French
+      input: Hello world
+  - vars:
+      model: 'llama3'
+      language: Spanish
+      input: Where is the library?
+
+prompts:
+  - 'Convert this English to {{language}}: {{input}}'
+  - 'Translate to {{language}}: {{input}}'

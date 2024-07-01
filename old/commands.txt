@@ -1,0 +1,2 @@
+npx promptfoo@latest eval
+npx promptfoo@latest view
